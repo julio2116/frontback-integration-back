@@ -1,0 +1,17 @@
+body{
+    justify-items: center;
+}
+img{
+    width: 100%;
+}
+li{
+    display: flex;
+    flex-direction: column;
+    width: 300px
+}
+ul{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "nome": "Nike Air Max 270",
+    "tamanho": ["39", "40", "41", "42", "43"],
+    "preco": 499.99,
+    "cor": "Preto",
+    "categoria": "Tênis Casual",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5557719-440-660/image-883175bb81ac4bdaa187aafaadf0633d.jpg?v=638753970427970000"
+  },
+  {
+    "id": 2,
+    "nome": "Adidas UltraBoost 22",
+    "tamanho": ["38", "39", "40", "41", "42"],
+    "preco": 799.99,
+    "cor": "Branco",
+    "categoria": "Tênis Esportivo",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5236409-440-660/image-640510a66a5f4669ad9e050877b401f8.jpg?v=638463775972700000"
+  },
+  {
+    "id": 3,
+    "nome": "Puma Suede Classic",
+    "tamanho": ["37", "38", "39", "40", "41"],
+    "preco": 299.99,
+    "cor": "Cinza",
+    "categoria": "Tênis Casual",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/1534276-440-660/image-b7eeead62b02485eae4af294467f5965.jpg?v=638743804454900000"
+  },
+  {
+    "id": 4,
+    "nome": "New Balance 990v5",
+    "tamanho": ["40", "41", "42", "43", "44"],
+    "preco": 599.99,
+    "cor": "Azul",
+    "categoria": "Tênis Esportivo",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/923126-440-660/image-57765cb62a72486791fc66a2226ee7b1.jpg?v=638743806928030000"
+  },
+  {
+    "id": 5,
+    "nome": "Reebok Classic Leather",
+    "tamanho": ["38", "39", "40", "41", "42"],
+    "preco": 399.99,
+    "cor": "Branco",
+    "categoria": "Tênis Casual",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5800292-440-660/image-b49499f5e6a444e88c14249b4e760f63.jpg?v=638763520516630000"
+  },
+  {
+    "id": 6,
+    "nome": "Asics Gel-Kayano 28",
+    "tamanho": ["39", "40", "41", "42", "43"],
+    "preco": 749.99,
+    "cor": "Preto/Prata",
+    "categoria": "Tênis Esportivo",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5798886-440-660/tenis-casual-beira-rio-detalhe-sola-preto-cor-preto-tamanho-35_0.webp?v=638763404117670000"
+  },
+  {
+    "id": 7,
+    "nome": "Vans Old Skool",
+    "tamanho": ["37", "38", "39", "40", "41"],
+    "preco": 299.99,
+    "cor": "Preto/Branco",
+    "categoria": "Tênis Casual",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5798858-440-660/tenis-casual-beira-rio-keds-preto-cor-preto-tamanho-34_0.webp?v=638763403978200000"
+  },
+  {
+    "id": 8,
+    "nome": "Converse Chuck Taylor All Star",
+    "tamanho": ["36", "37", "38", "39", "40"],
+    "preco": 299.99,
+    "cor": "Vermelho",
+    "categoria": "Tênis Casual",
+    "imagem": "https://example.com/converse_chuck_taylor_all_star.jpg"
+  },
+  {
+    "id": 9,
+    "nome": "Under Armour HOVR Phantom",
+    "tamanho": ["40", "41", "42", "43", "44"],
+    "preco": 699.99,
+    "cor": "Preto",
+    "categoria": "Tênis Esportivo",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5798858-440-660/tenis-casual-beira-rio-keds-preto-cor-preto-tamanho-34_0.webp?v=638763403978200000"
+  },
+  {
+    "id": 10,
+    "nome": "Fila Disruptor 2",
+    "tamanho": ["38", "39", "40", "41", "42"],
+    "preco": 399.99,
+    "cor": "Branco",
+    "categoria": "Tênis Casual",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5798842-440-660/mocassim-beira-rio-fivela-marfim-cor-marfim-tamanho-36_0.webp?v=638763403891670000"
+  },
+  {
+    "id": 11,
+    "nome": "Fila Disruptor 21",
+    "tamanho": ["38", "39", "40", "41", "42"],
+    "preco": 599.99,
+    "cor": "Branco",
+    "categoria": "Tênis Casual",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5796064-440-660/image-e8288d79f8a24629b28935551f017425.jpg?v=638762535001400000"
+  }
+]
