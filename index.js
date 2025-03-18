@@ -80,9 +80,34 @@ const deleteItem = (req, res) => {
     });
   });
 };
+const updateItem = ((req, res) => {
+  const teste = JSON.parse(fs.readFileSync('./teste.json'));
+  const id = Number(req.params.id);
 
-router.route("/").get(getAll).post(validateNewItem, createId, createNew);
-router.route("/:id").get(getOne).delete(deleteItem);
+  const newTeste = teste.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
+  fs.writeFile('./teste.json', JSON.stringify(newTeste), (err) => {
+    res.status(200).json({
+      status: 'success',
+      data: req.body
+    })
+  })
+})
+
+const validateKeys = ((req, res, next) => {
+  const body = req.body;
+  const itemKeys = 'nome, tamanho, preco, cor, categoria, imagem'
+  for (const key in body) {
+    if (itemKeys.includes(key) == false) {
+      return res.status(400).json({
+        status: 'inform only valid keys'
+      })
+    }
+  }
+  next()
+})
+
+router.route("/").get(getAll).post(validateKeys, validateNewItem, createId, createNew);
+router.route("/:id").get(getOne).delete(deleteItem).patch(validateKeys, updateItem);
 
 app.use("/api/v1/teste", router);
 
