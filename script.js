@@ -1,18 +1,14 @@
-const page = document.getElementsByTagName("ul")[0];
-
+const listItens = document.getElementsByTagName("ul")[0];
 const filter = document.getElementById('filter');
-
 
 let sapatos = [];
 
-const teste = (sapatos) => {
-  const menorPreco = sapatos;
-  console.log(menorPreco)
-  page.innerHTML = '';
+const renderContent = (sapatos) => {
+  listItens.innerHTML = '';
   
   for (const sapato of sapatos) {
     const { id, imagem, nome, preco } = sapato;
-    page.innerHTML += `
+    listItens.innerHTML += `
     <li id='${id}'>
     <img src='${imagem}'>
     <div>
@@ -28,20 +24,20 @@ async function fetchData() {
   const data = await dataFetch.json();
 
   sapatos = data.data;
-  teste(data.data);
+  renderContent(data.data);
 }
 
 filter.addEventListener('change', (event)=>{
-  valor = event.target.value;
+  filterValue = event.target.value;
   let ordenados = [...sapatos];
-  
-  if(valor === 'menorPreco'){
+
+  if(filterValue === 'menorPreco'){
     ordenados?.sort((a, b) => a.preco - b.preco);
   }
-  if(valor === 'maiorPreco'){
+  if(filterValue === 'maiorPreco'){
     ordenados?.sort((a, b) => b.preco - a.preco);
   }
-  teste(ordenados)
+  renderContent(ordenados)
 })
 
 fetchData();
