@@ -163,5 +163,20 @@
         "cor": "Branco",
         "categoria": "Tênis Casual",
         "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5796064-440-660/image-e8288d79f8a24629b28935551f017425.jpg?v=638762535001400000"
+    },
+    {
+        "id": 12,
+        "nome": "Estilingue",
+        "tamanho": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+        ],
+        "preco": 190.99,
+        "cor": "Branco",
+        "categoria": "Tênis Casual",
+        "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5796064-440-660/image-e8288d79f8a24629b28935551f017425.jpg?v=638762535001400000"
     }
 ]

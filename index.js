@@ -95,11 +95,12 @@ const updateItem = ((req, res) => {
 
 const validateKeys = ((req, res, next) => {
   const body = req.body;
-  const itemKeys = 'nome, tamanho, preco, cor, categoria, imagem'
+  const itemKeys = ['nome', 'tamanho', 'preco', 'cor', 'categoria', 'imagem']
   for (const key in body) {
     if (itemKeys.includes(key) == false) {
       return res.status(400).json({
-        status: 'inform only valid keys'
+        status: 'fail',
+        message: 'inform only valid keys'
       })
     }
   }
