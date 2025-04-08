@@ -15,6 +15,7 @@ const getAll = (req, res) => {
     data: teste,
   });
 };
+
 const getOne = (req, res) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
   const id = Number(req.params.id);
@@ -29,6 +30,7 @@ const getOne = (req, res) => {
     data: item,
   });
 };
+
 const createNew = (req, res) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
   const newItem = req.body;
@@ -41,12 +43,14 @@ const createNew = (req, res) => {
     });
   });
 };
+
 const createId = (req, res, next) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
   const id = teste.length + 1;
   req.body = Object.assign({ id }, req.body);
   next();
 };
+
 const validateNewItem = (req, res, next) => {
   const {
     nome = null,
@@ -69,6 +73,7 @@ const validateNewItem = (req, res, next) => {
   }
   next();
 };
+
 const deleteItem = (req, res) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
   const id = Number(req.params.id);
@@ -80,6 +85,7 @@ const deleteItem = (req, res) => {
     });
   });
 };
+
 const updateItem = ((req, res) => {
   const teste = JSON.parse(fs.readFileSync('./teste.json'));
   const id = Number(req.params.id);
