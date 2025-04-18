@@ -1,11 +1,13 @@
 const form = document.querySelector("form");
 const itemsContainer = document.querySelector("#items-container");
 const buttonDelete = document.querySelector("#main button");
-let id = '';
+let id = "";
+let allData = [];
+let searchTerm = "";
 
 form.addEventListener("input", (event) => {
   async function fetchData() {
-    const searchTerm = event.target.value.toLowerCase();
+    searchTerm = event.target.value.toLowerCase();
     let allItems = [];
     const parent = document.querySelector("#items-container");
     let shoeList = parent.querySelector("ul");
@@ -14,6 +16,7 @@ form.addEventListener("input", (event) => {
     if (searchTerm.length > 0) {
       const dataFetch = await fetch("http://localhost:8000/api/v1/teste");
       const data = await dataFetch.json();
+      allData = data.data;
       allItems = data.data.filter((el) =>
         el.nome.toLowerCase().includes(searchTerm)
       );
@@ -44,12 +47,15 @@ form.addEventListener("input", (event) => {
       searchBar.value = event.target.innerText;
 
       if (shoeList) parent.removeChild(shoeList);
-      id = event.target.id;
-
+      let item = {};
+      searchTerm = form.querySelector('input').value.toLowerCase();
+      if (allData) {
+        item = allData.find((el) => (el.nome.toLowerCase() === searchTerm));
+        id = item.id;
+      }
     });
-    buttonDelete.addEventListener('click', ()=>{
-      console.log('a')
-      if(id){
+    buttonDelete.addEventListener("click", () => {
+      if (id) {
         async function deleteData(id) {
           const fetchData = await fetch(
             `http://localhost:8000/api/v1/teste/${id}`,
@@ -61,11 +67,10 @@ form.addEventListener("input", (event) => {
             }
           );
           const data = await fetchData.json();
-          console.log(data);
         }
         deleteData(id);
       }
-    })
+    });
   }
   fetchData();
 });
