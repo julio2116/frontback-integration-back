@@ -46,19 +46,19 @@ const createNew = (req, res) => {
 
 const createId = (req, res, next) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
-  const id = teste.length + 1;
+  const id = Math.floor(Math.random() * 10000) + teste.length + 1;
   req.body = Object.assign({ id }, req.body);
   next();
 };
 
 const validateNewItem = (req, res, next) => {
   const {
-    nome = null,
-    tamanho = null,
-    preco = null,
-    cor = null,
-    categoria = null,
-    imagem = null,
+    nome,
+    tamanho,
+    preco,
+    cor,
+    categoria,
+    imagem,
   } = req.body;
 
   const newBody = { nome, tamanho, preco, cor, categoria, imagem };
