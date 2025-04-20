@@ -54,9 +54,17 @@ form.addEventListener("input", (event) => {
         id = item.id;
       }
     });
+
     buttonDelete.addEventListener("click", () => {
+      let item = {};
+
+      if (allData) {
+        item = allData.find((el) => (el.nome.toLowerCase() === form.querySelector('input').value.toLowerCase()));
+        id = item.id;
+      }
       if (id) {
         async function deleteData(id) {
+          console.log(`http://localhost:8000/api/v1/teste/${id}`)
           const fetchData = await fetch(
             `http://localhost:8000/api/v1/teste/${id}`,
             {

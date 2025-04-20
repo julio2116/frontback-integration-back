@@ -75,11 +75,12 @@ const validateNewItem = (req, res, next) => {
 };
 
 const deleteItem = (req, res) => {
-  const teste = JSON.parse(fs.readFileSync("./teste.json"));
-  const id = Number(req.params.id);
+  const fileContent = fs.readFileSync("./teste.json", 'utf-8');
+  const teste = fileContent.trim() ? JSON.parse(fileContent) : [];
 
+  const id = Number(req.params.id);
   const newTeste = teste.filter((el) => el.id !== id);
-  fs.writeFile("./teste.json", JSON.stringify(newTeste), (err) => {
+  fs.writeFileSync("./teste.json", JSON.stringify(newTeste, null, 2), (err) => {
     res.status(201).json({
       status: "success",
     });
