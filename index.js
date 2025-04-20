@@ -18,7 +18,7 @@ const getAll = (req, res) => {
 
 const getOne = (req, res) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
-  const id = Number(req.params.id);
+  const id = req.params.id;
   const item = teste.find((el) => el.id === id);
   if (!item)
     res.status(404).json({
@@ -36,7 +36,7 @@ const createNew = (req, res) => {
   const newItem = req.body;
   teste.push(newItem);
 
-  fs.writeFile("./teste.json", JSON.stringify(teste), () => {
+  fs.writeFileSync("./teste.json", JSON.stringify(teste, null, 2), () => {
     res.status(200).json({
       status: "success",
       item: newItem,
@@ -46,7 +46,7 @@ const createNew = (req, res) => {
 
 const createId = (req, res, next) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
-  const id = Math.floor(Math.random() * 10000) + teste.length + 1;
+  const id = 'item-' + Math.floor(Math.random() * 10000) + teste.length + 1;
   req.body = Object.assign({ id }, req.body);
   next();
 };
@@ -78,7 +78,7 @@ const deleteItem = (req, res) => {
   const fileContent = fs.readFileSync("./teste.json", 'utf-8');
   const teste = fileContent.trim() ? JSON.parse(fileContent) : [];
 
-  const id = Number(req.params.id);
+  const id = req.params.id;
   const newTeste = teste.filter((el) => el.id !== id);
   fs.writeFileSync("./teste.json", JSON.stringify(newTeste, null, 2), (err) => {
     res.status(201).json({
@@ -89,10 +89,10 @@ const deleteItem = (req, res) => {
 
 const updateItem = ((req, res) => {
   const teste = JSON.parse(fs.readFileSync('./teste.json'));
-  const id = Number(req.params.id);
+  const id = req.params.id;
 
   const newTeste = teste.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
-  fs.writeFile('./teste.json', JSON.stringify(newTeste), (err) => {
+  fs.writeFileSync("./teste.json", JSON.stringify(newTeste, null, 2), (err) => {
     res.status(200).json({
       status: 'success',
       data: req.body

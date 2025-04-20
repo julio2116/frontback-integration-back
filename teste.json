@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "item-1",
     "nome": "Nike Air Max 270",
     "tamanho": [
       "39",
@@ -15,7 +15,7 @@
     "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5557719-440-660/image-883175bb81ac4bdaa187aafaadf0633d.jpg?v=638753970427970000"
   },
   {
-    "id": 2,
+    "id": "item-2",
     "nome": "Adidas UltraBoost 22",
     "tamanho": [
       "38",
@@ -30,7 +30,7 @@
     "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5236409-440-660/image-640510a66a5f4669ad9e050877b401f8.jpg?v=638463775972700000"
   },
   {
-    "id": 3,
+    "id": "item-3",
     "nome": "Puma Suede Classic",
     "tamanho": [
       "37",
@@ -45,7 +45,7 @@
     "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/1534276-440-660/image-b7eeead62b02485eae4af294467f5965.jpg?v=638743804454900000"
   },
   {
-    "id": 4,
+    "id": "item-4",
     "nome": "New Balance 990v5",
     "tamanho": [
       "40",
@@ -60,7 +60,7 @@
     "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/923126-440-660/image-57765cb62a72486791fc66a2226ee7b1.jpg?v=638743806928030000"
   },
   {
-    "id": 5,
+    "id": "item-5",
     "nome": "Reebok Classic Leather",
     "tamanho": [
       "38",
@@ -75,7 +75,7 @@
     "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5800292-440-660/image-b49499f5e6a444e88c14249b4e760f63.jpg?v=638763520516630000"
   },
   {
-    "id": 6,
+    "id": "item-6",
     "nome": "Asics Gel-Kayano 28",
     "tamanho": [
       "39",
@@ -90,7 +90,7 @@
     "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5798886-440-660/tenis-casual-beira-rio-detalhe-sola-preto-cor-preto-tamanho-35_0.webp?v=638763404117670000"
   },
   {
-    "id": 7,
+    "id": "item-7",
     "nome": "Vans Old Skool",
     "tamanho": [
       "37",

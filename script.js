@@ -1,29 +1,33 @@
-const listItens = document.getElementsByTagName("ul")[0];
-const filter = document.getElementById('filter');
+const filter = document.querySelector('#filter');
 
 let sapatos = [];
 
 const renderContent = (sapatos) => {
-  listItens.innerHTML = '';
+  const father = document.createElement('ul')
+  const element = document.querySelector('body');
+  element.appendChild(father).setAttribute('id', 'list');
+  const listItens = document.querySelector("#list");
   
   for (const sapato of sapatos) {
     const { id, imagem, nome, preco } = sapato;
-    listItens.innerHTML += `
-    <li id='${id}'>
-    <img src='${imagem}'>
-    <div>
-    <span>${nome}</span>
-    <span>${preco}</span>
-    </div>
-    </li>`;
+    listItens.appendChild(document.createElement('li')).setAttribute('id', id);
+    const item = listItens.querySelector(`#${id}`);
+
+    item.appendChild(document.createElement('img')).setAttribute('src', imagem);
+    item.appendChild(document.createElement('div'));
+    const div = item.querySelector(`div`);
+
+    div.appendChild(document.createElement('span')).textContent = nome;
+    div.appendChild(document.createElement('span')).textContent = preco;
   }
-};
+}
 
 async function fetchData() {
   const dataFetch = await fetch("http://localhost:8000/api/v1/teste");
   const data = await dataFetch.json();
 
   sapatos = data.data;
+  console.log(data.data)
   renderContent(data.data);
 }
 
