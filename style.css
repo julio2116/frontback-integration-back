@@ -1,19 +1,36 @@
-body{
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+main{
     justify-items: center;
 }
 img{
     width: 100%;
+    object-fit: cover;
 }
 li{
     display: flex;
     flex-direction: column;
-    width: 300px
+    width: 15rem;
+    display: flex;
+}
+.img-container{
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
+}
+li div{
+    display: flex;
+    justify-content: space-between;
 }
 ul{
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
-    max-width: 1000px;
+    justify-content: center;
+    gap: 5px 40px;
 }
 
 form{

@@ -3,19 +3,27 @@ const filter = document.querySelector('#filter');
 let sapatos = [];
 
 const renderContent = (sapatos) => {
-  const father = document.createElement('ul')
-  const element = document.querySelector('body');
+  const list = document.querySelector('#list');
+  const main = document.querySelector('main');
+  if(list)main.removeChild(list);
+
+  const father = document.createElement('ul');
+  const element = document.querySelector('main');
   element.appendChild(father).setAttribute('id', 'list');
   const listItens = document.querySelector("#list");
   
   for (const sapato of sapatos) {
-    const { id, imagem, nome, preco } = sapato;
+    let { id, imagem, nome, preco } = sapato;
+    preco = preco.toString().replace(".", ",")
     listItens.appendChild(document.createElement('li')).setAttribute('id', id);
     const item = listItens.querySelector(`#${id}`);
+    item.appendChild(document.createElement('div')).classList.add('img-container');
 
-    item.appendChild(document.createElement('img')).setAttribute('src', imagem);
-    item.appendChild(document.createElement('div'));
-    const div = item.querySelector(`div`);
+    const imgContainer = item.querySelector('.img-container')
+
+    imgContainer.appendChild(document.createElement('img')).setAttribute('src', imagem);
+    item.appendChild(document.createElement('div')).setAttribute('id', 'teste');
+    const div = item.querySelector(`#teste`);
 
     div.appendChild(document.createElement('span')).textContent = nome;
     div.appendChild(document.createElement('span')).textContent = preco;
