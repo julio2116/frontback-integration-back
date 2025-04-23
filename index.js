@@ -9,38 +9,45 @@ app.use(cors())
 const router = express.Router();
 
 const getAll = (req, res) => {
-  const teste = JSON.parse(fs.readFileSync("./teste.json"));
-  res.status(200).json({
-    status: "success",
-    data: teste,
+  fs.readFile("./teste.json", "utf-8", (err, data)=>{
+    data = JSON.parse(data);
+    res.status(200).json({
+      status: "success",
+      data,
+    });
   });
 };
 
 const getOne = (req, res) => {
-  const teste = JSON.parse(fs.readFileSync("./teste.json"));
-  const id = req.params.id;
-  const item = teste.find((el) => el.id === id);
-  if (!item)
-    res.status(404).json({
-      status: "not found",
+  fs.readFile("./teste.json", "utf-8", (err, data)=>{
+    data = JSON.parse(data);
+    const id = req.params.id;
+    const item = data.find((el) => el.id === id);
+    if (!item)
+      res.status(404).json({
+        status: "not found",
+      });
+  
+    res.status(200).json({
+      status: "success",
+      data: item,
     });
-
-  res.status(200).json({
-    status: "success",
-    data: item,
   });
 };
 
 const createNew = (req, res) => {
-  const teste = JSON.parse(fs.readFileSync("./teste.json"));
-  const newItem = req.body;
-  teste.push(newItem);
-
-  fs.writeFileSync("./teste.json", JSON.stringify(teste, null, 2), () => {
-    res.status(200).json({
-      status: "success",
-      item: newItem,
+  fs.readFile("./teste.json", "utf-8", (err, data)=>{
+    data = JSON.parse(data);
+    const newItem = req.body;
+    data.push(newItem);
+  
+    fs.writeFile("./teste.json", JSON.stringify(data, null, 2), ()=>{
+      res.status(200).json({
+        status: "success",
+        item: newItem,
+      });
     });
+
   });
 };
 
@@ -75,30 +82,33 @@ const validateNewItem = (req, res, next) => {
 };
 
 const deleteItem = (req, res) => {
-  const fileContent = fs.readFileSync("./teste.json", 'utf-8');
-  const teste = fileContent.trim() ? JSON.parse(fileContent) : [];
-
-  const id = req.params.id;
-  const newTeste = teste.filter((el) => el.id !== id);
-  fs.writeFileSync("./teste.json", JSON.stringify(newTeste, null, 2), (err) => {
-    res.status(201).json({
-      status: "success",
+  fs.readFile("./teste.json", 'utf-8', (err, data)=>{
+    data = JSON.parse(data)
+  
+    const id = req.params.id;
+    const newTeste = data.filter((el) => el.id !== id);
+    fs.writeFile("./teste.json", JSON.stringify(newTeste, null, 2), ()=>{
+      res.status(201).json({
+        status: "success",
+      });
     });
   });
 };
 
 const updateItem = ((req, res) => {
-  const teste = JSON.parse(fs.readFileSync('./teste.json'));
-  const id = req.params.id;
-
-  const newTeste = teste.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
-  fs.writeFileSync("./teste.json", JSON.stringify(newTeste, null, 2), (err) => {
-    res.status(200).json({
-      status: 'success',
-      data: req.body
-    })
+  fs.readFile('./teste.json', 'utf-8', (err, data)=>{
+    data = JSON.parse(data);
+    const id = req.params.id;
+  
+    const newTeste = data.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
+    fs.writeFile("./teste.json", JSON.stringify(newTeste, null, 2), ()=>{
+      res.status(200).json({
+        status: 'success',
+        data: req.body
+      })
+    });
   })
-})
+});
 
 const validateKeys = ((req, res, next) => {
   const body = req.body;
