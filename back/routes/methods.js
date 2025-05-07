@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const getAll = (req, res) => {
-  fs.readFile("./back/db/teste.json", "utf-8", (err, data)=>{
+  fs.readFile("./back/db/products.json", "utf-8", (err, data)=>{
     data = JSON.parse(data);
     res.status(200).json({
       status: "success",
@@ -11,7 +11,7 @@ const getAll = (req, res) => {
 };
 
 const getOne = (req, res) => {
-  fs.readFile("./back/db/teste.json", "utf-8", (err, data)=>{
+  fs.readFile("./back/db/products.json", "utf-8", (err, data)=>{
     data = JSON.parse(data);
     const id = req.params.id;
     const item = data.find((el) => el.id === id);
@@ -28,12 +28,12 @@ const getOne = (req, res) => {
 };
 
 const createNew = (req, res) => {
-  fs.readFile("./back/db/teste.json", "utf-8", (err, data)=>{
+  fs.readFile("./back/db/products.json", "utf-8", (err, data)=>{
     data = JSON.parse(data);
     const newItem = req.body;
     data.push(newItem);
   
-    fs.writeFile("./back/db/teste.json", JSON.stringify(data, null, 2), ()=>{
+    fs.writeFile("./back/db/products.json", JSON.stringify(data, null, 2), ()=>{
       res.status(200).json({
         status: "success",
         item: newItem,
@@ -44,12 +44,12 @@ const createNew = (req, res) => {
 };
 
 const deleteItem = (req, res) => {
-  fs.readFile("./back/db/teste.json", 'utf-8', (err, data)=>{
+  fs.readFile("./back/db/products.json", 'utf-8', (err, data)=>{
     data = JSON.parse(data)
   
     const id = req.params.id;
-    const newTeste = data.filter((el) => el.id !== id);
-    fs.writeFile("./back/db/teste.json", JSON.stringify(newTeste, null, 2), ()=>{
+    const newProducts = data.filter((el) => el.id !== id);
+    fs.writeFile("./back/db/products.json", JSON.stringify(newProducts, null, 2), ()=>{
       res.status(201).json({
         status: "success",
       });
@@ -58,12 +58,12 @@ const deleteItem = (req, res) => {
 };
 
 const updateItem = ((req, res) => {
-  fs.readFile('./back/db/teste.json', 'utf-8', (err, data)=>{
+  fs.readFile('./back/db/products.json', 'utf-8', (err, data)=>{
     data = JSON.parse(data);
     const id = req.params.id;
   
-    const newTeste = data.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
-    fs.writeFile("./back/db/teste.json", JSON.stringify(newTeste, null, 2), ()=>{
+    const newProducts = data.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
+    fs.writeFile("./back/db/products.json", JSON.stringify(newProducts, null, 2), ()=>{
       res.status(200).json({
         status: 'success',
         data: req.body

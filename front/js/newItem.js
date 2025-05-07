@@ -9,7 +9,7 @@ form.addEventListener("submit", (event) => {
   data.tamanho = tamanhos;
 
   async function createNewItem(item) {
-    const sendFetch = await fetch("http://localhost:8000/api/v1/teste", {
+    const sendFetch = await fetch("http://localhost:8000/api/v1/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ form.addEventListener("submit", (event) => {
       body: JSON.stringify(item),
     });
     const dataReceived = await sendFetch.json();
-    console.log(dataReceived);
+    alert(`Success creating new item: ${dataReceived.item.nome}`)
   }
   createNewItem(data);
 });

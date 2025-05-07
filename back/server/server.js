@@ -7,7 +7,7 @@ app.use(cors())
 
 const router = require('../routes/routes')
 
-app.use("/api/v1/teste", router);
+app.use("/api/v1/products", router);
 
 app.listen(8000, "localhost", () => {
   console.log("http://localhost:8000");

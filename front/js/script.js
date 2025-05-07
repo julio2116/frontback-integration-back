@@ -22,8 +22,8 @@ const renderContent = (sapatos) => {
     const imgContainer = item.querySelector('.img-container')
 
     imgContainer.appendChild(document.createElement('img')).setAttribute('src', imagem);
-    item.appendChild(document.createElement('div')).setAttribute('id', 'teste');
-    const div = item.querySelector(`#teste`);
+    item.appendChild(document.createElement('div')).setAttribute('id', 'info');
+    const div = item.querySelector(`#info`);
 
     div.appendChild(document.createElement('span')).textContent = nome;
     div.appendChild(document.createElement('span')).textContent = preco;
@@ -31,11 +31,10 @@ const renderContent = (sapatos) => {
 }
 
 async function fetchData() {
-  const dataFetch = await fetch("http://localhost:8000/api/v1/teste");
+  const dataFetch = await fetch("http://localhost:8000/api/v1/products");
   const data = await dataFetch.json();
 
   sapatos = data.data;
-  console.log(data.data)
   renderContent(data.data);
 }
 

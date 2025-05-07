@@ -14,16 +14,16 @@ form.addEventListener("input", (event) => {
     if (shoeList) parent.removeChild(shoeList);
 
     if (searchTerm.length > 0) {
-      const dataFetch = await fetch("http://localhost:8000/api/v1/teste");
+      const dataFetch = await fetch("http://localhost:8000/api/v1/products");
       const data = await dataFetch.json();
       allData = data.data;
       allItems = data.data.filter((el) =>
         el.nome.toLowerCase().includes(searchTerm)
       );
       let names = allItems.map((el) => [el.id, el.nome]);
-      let teste = "ul";
+      let lista = "ul";
       names = Object.fromEntries(names);
-      itemsContainer.appendChild(document.createElement(teste));
+      itemsContainer.appendChild(document.createElement(lista));
 
       let sugestItems = [];
 
@@ -42,18 +42,20 @@ form.addEventListener("input", (event) => {
 
     shoeList = parent.querySelector("ul");
 
-    shoeList.addEventListener("click", (event) => {
-      const searchBar = document.querySelector("#search-bar");
-      searchBar.value = event.target.innerText;
+    if (shoeList) {
+      shoeList.addEventListener("click", (event) => {
+        const searchBar = document.querySelector("#search-bar");
+        searchBar.value = event.target.innerText;
 
-      if (shoeList) parent.removeChild(shoeList);
-      let item = {};
-      searchTerm = form.querySelector('input').value.toLowerCase();
-      if (allData) {
-        item = allData.find((el) => (el.nome.toLowerCase() === searchTerm));
-        id = item.id;
-      }
-    });
+        if (shoeList) parent.removeChild(shoeList);
+        let item = {};
+        searchTerm = form.querySelector('input').value.toLowerCase();
+        if (allData) {
+          item = allData.find((el) => (el.nome.toLowerCase() === searchTerm));
+          id = item.id;
+        }
+      });
+    }
 
     buttonDelete.addEventListener("click", () => {
       let item = {};
@@ -64,9 +66,8 @@ form.addEventListener("input", (event) => {
       }
       if (id) {
         async function deleteData(id) {
-          console.log(`http://localhost:8000/api/v1/teste/${id}`)
           const fetchData = await fetch(
-            `http://localhost:8000/api/v1/teste/${id}`,
+            `http://localhost:8000/api/v1/products/${id}`,
             {
               method: "DELETE",
               headers: {
