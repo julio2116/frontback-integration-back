@@ -1,10 +1,10 @@
 const express = require("express");
 const fs = require("fs");
-const cors = require("cors")
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 const router = express.Router();
 
@@ -51,6 +51,35 @@ const createNew = (req, res) => {
   });
 };
 
+const deleteItem = (req, res) => {
+  fs.readFile("./teste.json", 'utf-8', (err, data)=>{
+    data = JSON.parse(data)
+  
+    const id = req.params.id;
+    const newTeste = data.filter((el) => el.id !== id);
+    fs.writeFile("./teste.json", JSON.stringify(newTeste, null, 2), ()=>{
+      res.status(201).json({
+        status: "success",
+      });
+    });
+  });
+};
+
+const updateItem = ((req, res) => {
+  fs.readFile('./teste.json', 'utf-8', (err, data)=>{
+    data = JSON.parse(data);
+    const id = req.params.id;
+  
+    const newTeste = data.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
+    fs.writeFile("./teste.json", JSON.stringify(newTeste, null, 2), ()=>{
+      res.status(200).json({
+        status: 'success',
+        data: req.body
+      })
+    });
+  })
+});
+
 const createId = (req, res, next) => {
   const teste = JSON.parse(fs.readFileSync("./teste.json"));
   const id = 'item-' + Math.floor(Math.random() * 10000) + teste.length + 1;
@@ -80,35 +109,6 @@ const validateNewItem = (req, res, next) => {
   }
   next();
 };
-
-const deleteItem = (req, res) => {
-  fs.readFile("./teste.json", 'utf-8', (err, data)=>{
-    data = JSON.parse(data)
-  
-    const id = req.params.id;
-    const newTeste = data.filter((el) => el.id !== id);
-    fs.writeFile("./teste.json", JSON.stringify(newTeste, null, 2), ()=>{
-      res.status(201).json({
-        status: "success",
-      });
-    });
-  });
-};
-
-const updateItem = ((req, res) => {
-  fs.readFile('./teste.json', 'utf-8', (err, data)=>{
-    data = JSON.parse(data);
-    const id = req.params.id;
-  
-    const newTeste = data.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
-    fs.writeFile("./teste.json", JSON.stringify(newTeste, null, 2), ()=>{
-      res.status(200).json({
-        status: 'success',
-        data: req.body
-      })
-    });
-  })
-});
 
 const validateKeys = ((req, res, next) => {
   const body = req.body;

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node back/server/server.js",
     "load-test": "bash loadTest.sh",
     "load-huge-test": "bash hugeLoadTest.sh"
   },

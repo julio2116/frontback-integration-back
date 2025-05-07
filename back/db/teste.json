@@ -103,5 +103,19 @@
     "cor": "Preto/Branco",
     "categoria": "Tênis Casual",
     "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5798858-440-660/tenis-casual-beira-rio-keds-preto-cor-preto-tamanho-34_0.webp?v=638763403978200000"
+  },
+  {
+    "id": "item-2767",
+    "nome": "teste123",
+    "tamanho": [
+      "16",
+      "21",
+      "",
+      ""
+    ],
+    "preco": "150",
+    "cor": "preto",
+    "categoria": "tenis",
+    "imagem": "abc"
   }
 ]
