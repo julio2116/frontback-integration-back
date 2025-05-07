@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/alterDelItem.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Delete um item</h1>
-    <div id="main">
-      <form action="">
-        <label for="search-bar">Selecione um item</label>
-        <input type="text" id="search-bar" name="searchBar" />
-        <button>🗑️</button>
-      </form>
-    </div>
-    <div id="items-container" class="sugest"></div>
-    <script src="../js/alterDelItem.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/alterDelItem.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Delete um item</h1>
+  <main>
+    <aside class="items-search zona">
+      <div id="main">
+        <form action="">
+          <label for="search-bar">Selecione um item</label>
+          <input type="text" id="search-bar" name="searchBar" />
+          <button>🗑️</button>
+        </form>
+      </div>
+      <div id="items-container" class="sugest"></div>
+    </aside>
+    <aside class="items-view">
+      <div class="zona" id="delete">🗑️</div>
+      <div class="zona" id="view"></div>
+    </aside>
+  </main>
+  <script src="../js/alterDelItem.js"></script>
+  <script src="../js/dragnDrop.js"></script>
+</body>
+
 </html>

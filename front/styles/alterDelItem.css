@@ -1,9 +1,18 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+h1{
+    text-align: center;
+    margin-bottom: 15px;
+}
 ul{
     list-style: none;
     background-color: blue;
     width: fit-content;
     padding: 5px 10px;
     border-radius: 10px;
+    margin-top: 10px;
 }
 li{
     border-radius: 10px;
@@ -13,4 +22,36 @@ li{
 li:hover{
     background-color: aqua;
     color: rgb(0, 0, 0);
+}
+.sugest{
+    width: fit-content;
+}
+.items-search{
+    border-right: 1px rgb(0, 0, 0, 50%) solid;
+    min-height: calc(100vh - 70px);
+}
+
+aside[class^='items']{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    height: 100%;
+}
+main{
+    display: flex;
+}
+.items-view{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.items-view > *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    min-height: 80px;
+    background-color: blue;
 }
