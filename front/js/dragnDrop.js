@@ -13,7 +13,6 @@ function teste(itemsContainer) {
         item.classList.remove('dragging');
     });
     zonas.forEach(zona => {
-        zona.innerHTML = '';
         zona.addEventListener('dragleave', (event) => {
             zona.classList.remove('dragover')
         });
@@ -24,16 +23,20 @@ function teste(itemsContainer) {
         });
         
         zona.addEventListener('drop', (event) => {
-            zona.classList.remove('dragover')
+            zona.innerHTML = '';
             async function fetchData() {
+                zona.classList.remove('dragover')
                 const dataFetch = await fetch(`http://localhost:8000/api/v1/products/${event.dataTransfer.getData('text')}`);
                 const data = await dataFetch.json();
-                zona.innerHTML = data.data.nome
-                console.log(data.data);
+                return data.data
             }
-            fetchData();
-            itemsContainer.hasChildNodes() && itemsContainer.removeChild(list);
-            searchBar.value = '';
+            fetchData().then((data)=>{
+                zona.innerHTML = data.nome
+                if (list && list.parentNode === itemsContainer) {
+                    itemsContainer.removeChild(list);
+                }
+                searchBar.value = '';
+            });
         });
     })
 }

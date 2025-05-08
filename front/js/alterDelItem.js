@@ -40,11 +40,7 @@ form.addEventListener("input", (event) => {
         [['id', el[1]], ['draggable', 'true']].forEach(el=>item.setAttribute(el[0], el[1]));
         item.innerText = el[2];
       });
-<<<<<<< HEAD
       teste(itemsContainer);
-=======
-      teste(list);
->>>>>>> 4dc8f40583297d16c830129fbe6284901234704f
     }
 
     shoeList = parent.querySelector("ul");
@@ -63,29 +59,6 @@ form.addEventListener("input", (event) => {
         }
       });
     }
-
-    buttonDelete.addEventListener("click", () => {
-      let item = {};
-
-      if (allData) {
-        item = allData.find((el) => (el.nome.toLowerCase() === form.querySelector('input').value.toLowerCase()));
-        id = item.id;
-      }
-      if (id) {
-        async function deleteData(id) {
-          const fetchData = await fetch(
-            `http://localhost:8000/api/v1/products/${id}`,
-            {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-        }
-        deleteData(id);
-      }
-    });
   }
   fetchData();
 });
