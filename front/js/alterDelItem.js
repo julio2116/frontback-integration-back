@@ -1,3 +1,6 @@
+import testeObject from './dragnDrop.js';
+const { teste } = testeObject;
+
 const form = document.querySelector("form");
 const itemsContainer = document.querySelector("#items-container");
 const buttonDelete = document.querySelector("#main button");
@@ -21,9 +24,8 @@ form.addEventListener("input", (event) => {
         el.nome.toLowerCase().includes(searchTerm)
       );
       let names = allItems.map((el) => [el.id, el.nome]);
-      let lista = "ul";
       names = Object.fromEntries(names);
-      itemsContainer.appendChild(document.createElement(lista));
+      itemsContainer.appendChild(document.createElement('ul'));
 
       let sugestItems = [];
 
@@ -35,9 +37,10 @@ form.addEventListener("input", (event) => {
       sugestItems.forEach((el) => {
         list.appendChild(document.createElement(el[0]));
         const item = list.lastChild;
-        item.setAttribute("id", el[1]);
+        [['id', el[1]], ['draggable', 'true']].forEach(el=>item.setAttribute(el[0], el[1]));
         item.innerText = el[2];
       });
+      teste(itemsContainer);
     }
 
     shoeList = parent.querySelector("ul");
@@ -75,7 +78,6 @@ form.addEventListener("input", (event) => {
               },
             }
           );
-          const data = await fetchData.json();
         }
         deleteData(id);
       }

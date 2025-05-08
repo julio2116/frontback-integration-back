@@ -34,7 +34,7 @@ li:hover{
 aside[class^='items']{
     width: 50%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     margin-top: 10px;
     height: 100%;
 }
@@ -43,7 +43,6 @@ main{
 }
 .items-view{
     display: flex;
-    flex-direction: column;
     gap: 20px;
     align-items: center;
 }
@@ -54,4 +53,10 @@ main{
     width: 300px;
     min-height: 80px;
     background-color: blue;
+}
+.dragover{
+    opacity: 0.5;
+}
+.dragging{
+    opacity: .8;
 }
