@@ -40,7 +40,11 @@ form.addEventListener("input", (event) => {
         [['id', el[1]], ['draggable', 'true']].forEach(el=>item.setAttribute(el[0], el[1]));
         item.innerText = el[2];
       });
+<<<<<<< HEAD
       teste(itemsContainer);
+=======
+      teste(list);
+>>>>>>> 4dc8f40583297d16c830129fbe6284901234704f
     }
 
     shoeList = parent.querySelector("ul");
