@@ -1,4 +1,9 @@
-const list = document.querySelector('#items-container ul');
-if(list){
-    list.addEventListener('')
+function teste(list){
+    if(list){
+        console.log(list)
+    }
+}
+
+export default {
+    teste
 }
