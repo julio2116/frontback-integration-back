@@ -1,5 +1,6 @@
+let eventsExistents = false;
 function teste(itemsContainer) {
-    const list = itemsContainer.querySelector('ul');
+    let list = itemsContainer.querySelector('ul');
     const zonas = document.querySelectorAll('.zona');
     const searchBar = document.querySelector('#search-bar');
 
@@ -12,26 +13,55 @@ function teste(itemsContainer) {
         const item = event.target;
         item.classList.remove('dragging');
     });
+
+    if (eventsExistents){
+        return;
+    }
+    eventsExistents = true;
+
     zonas.forEach(zona => {
-        zona.addEventListener('dragleave', (event) => {
+        zona.addEventListener('dragleave', () => {
             zona.classList.remove('dragover')
         });
-        
+
         zona.addEventListener('dragover', (event) => {
             event.preventDefault();
             zona.classList.add('dragover');
         });
-        
+
         zona.addEventListener('drop', (event) => {
-            zona.innerHTML = '';
             async function fetchData() {
                 zona.classList.remove('dragover')
                 const dataFetch = await fetch(`http://localhost:8000/api/v1/products/${event.dataTransfer.getData('text')}`);
                 const data = await dataFetch.json();
                 return data.data
             }
-            fetchData().then((data)=>{
-                zona.innerHTML = data.nome
+            fetchData().then((data) => {
+                zona.innerHTML = '';
+                list = itemsContainer.querySelector('ul');
+                console.log(list)
+                if (zona.id === 'view') {
+                    let { id, imagem, nome, preco } = data;
+                    preco = preco.toString().replace(".", ",")
+                    zona.appendChild(document.createElement('div')).setAttribute('id', id);
+                    const item = zona.querySelector(`#${id}`);
+                    item.classList.add('product')
+                    item.appendChild(document.createElement('div')).classList.add('img-container');
+
+                    const imgContainer = item.querySelector('.img-container')
+
+                    imgContainer.appendChild(document.createElement('img')).setAttribute('src', imagem);
+                    item.appendChild(document.createElement('div')).setAttribute('id', 'info');
+                    const div = item.querySelector(`#info`);
+
+                    div.appendChild(document.createElement('span')).textContent = nome;
+                    div.appendChild(document.createElement('span')).textContent = preco;
+                }
+                if(zona.id === 'delete'){
+                    const confirmation = confirm('Tem certeza que deseja apagar?');
+
+                }
+
                 if (list && list.parentNode === itemsContainer) {
                     itemsContainer.removeChild(list);
                 }

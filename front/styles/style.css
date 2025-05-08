@@ -10,7 +10,7 @@ img{
     width: 100%;
     object-fit: cover;
 }
-li{
+.product{
     display: flex;
     flex-direction: column;
     width: 15rem;

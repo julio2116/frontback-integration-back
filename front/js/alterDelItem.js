@@ -7,6 +7,7 @@ const buttonDelete = document.querySelector("#main button");
 let id = "";
 let allData = [];
 let searchTerm = "";
+let eventsExistents = false;
 
 form.addEventListener("input", (event) => {
   async function fetchData() {
@@ -40,7 +41,15 @@ form.addEventListener("input", (event) => {
         [['id', el[1]], ['draggable', 'true']].forEach(el=>item.setAttribute(el[0], el[1]));
         item.innerText = el[2];
       });
-      teste(itemsContainer);
+
+      (()=>{
+        if (eventsExistents){
+          return;
+        }
+        teste(itemsContainer);
+        eventsExistents = true;
+      })()
+      
     }
 
     shoeList = parent.querySelector("ul");

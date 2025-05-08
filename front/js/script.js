@@ -17,6 +17,7 @@ const renderContent = (sapatos) => {
     preco = preco.toString().replace(".", ",")
     listItens.appendChild(document.createElement('li')).setAttribute('id', id);
     const item = listItens.querySelector(`#${id}`);
+    item.classList.add('product')
     item.appendChild(document.createElement('div')).classList.add('img-container');
 
     const imgContainer = item.querySelector('.img-container')

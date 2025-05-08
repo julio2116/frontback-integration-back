@@ -19,6 +19,25 @@ li{
     padding: 5px 10px;
     cursor: pointer;
 }
+.product{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    display: flex;
+}
+.img-container{
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
+}
+.product div{
+    display: flex;
+    justify-content: space-between;
+}
+img{
+    width: 100%;
+    object-fit: cover;
+}
 li:hover{
     background-color: aqua;
     color: rgb(0, 0, 0);
