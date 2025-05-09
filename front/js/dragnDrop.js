@@ -23,16 +23,16 @@ function teste(list) {
         });
 
         zona.addEventListener('drop', (event) => {
-            async function fetchData() {
-                zona.classList.remove('dragover')
-                const dataFetch = await fetch(`http://localhost:8000/api/v1/products/${event.dataTransfer.getData('text')}`);
-                const data = await dataFetch.json();
-                return data.data
-            }
-            fetchData().then((data) => {
-                zona.innerHTML = '';
-                if (zona.id === 'view') {
-                    let { id, imagem, nome, preco } = data;
+            event.preventDefault();
+
+            if (zona.id === 'view') {
+                async function fetchData() {
+                    zona.classList.remove('dragover')
+                    const dataFetch = await fetch(`http://localhost:8000/api/v1/products/${event.dataTransfer.getData('text')}`);
+                    const data = await dataFetch.json();
+                    // return data.data
+                    zona.innerHTML = '';
+                    let { id, imagem, nome, preco } = data.data;
                     preco = preco.toString().replace(".", ",")
                     zona.appendChild(document.createElement('div')).setAttribute('id', id);
                     const item = zona.querySelector(`#${id}`);
@@ -48,17 +48,28 @@ function teste(list) {
                     div.appendChild(document.createElement('span')).textContent = nome;
                     div.appendChild(document.createElement('span')).textContent = preco;
                 }
-                if (zona.id === 'delete') {
-                    const confirmation = confirm('Tem certeza que deseja apagar?');
-                    console.log(confirmation)
+                fetchData()
+            }
+
+            if (zona.id === 'delete') {
+                const confirmation = confirm('Tem certeza que deseja apagar?');
+                if (!confirmation) return
+                async function deleteItem() {
+                    const dataFetch = await fetch(`http://localhost:8000/api/v1/products/${event.dataTransfer.getData('text')}`, {
+                        method: 'DELETE',
+                    });
+                    const data = await dataFetch.json();
+                    alert(data.status)
                 }
-                list.innerHTML = '';
-                list.style.display = 'none';
-                searchBar.value = '';
-            });
+                deleteItem()
+            }
+            list.innerHTML = '';
+            list.style.display = 'none';
+            searchBar.value = '';
         });
-    })
+    });
 }
+
 
 export default {
     teste
