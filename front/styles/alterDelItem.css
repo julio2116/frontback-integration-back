@@ -78,3 +78,7 @@ main{
 .dragging{
     opacity: .8;
 }
+.zona{
+    display: flex;
+    flex-direction: column;
+}

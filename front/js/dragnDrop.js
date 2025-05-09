@@ -1,3 +1,5 @@
+import alterItem from './alterItem.js';
+
 function teste(list) {
     const zonas = document.querySelectorAll('.zona');
     const searchBar = document.querySelector('#search-bar');
@@ -47,6 +49,8 @@ function teste(list) {
 
                     div.appendChild(document.createElement('span')).textContent = nome;
                     div.appendChild(document.createElement('span')).textContent = preco;
+
+                    alterItem(...[data.data])
                 }
                 fetchData()
             }

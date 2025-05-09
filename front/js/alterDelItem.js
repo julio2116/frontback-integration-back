@@ -47,7 +47,6 @@ form.addEventListener("input", (event) => {
         teste(list);
         eventsExistents = true;
       })()
-      
     }
 
     if (list) {
