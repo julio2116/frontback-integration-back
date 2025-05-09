@@ -2,8 +2,7 @@ import testeObject from './dragnDrop.js';
 const { teste } = testeObject;
 
 const form = document.querySelector("form");
-const itemsContainer = document.querySelector("#items-container");
-const buttonDelete = document.querySelector("#main button");
+let list = document.querySelector("#items-container");
 let id = "";
 let allData = [];
 let searchTerm = "";
@@ -13,9 +12,8 @@ form.addEventListener("input", (event) => {
   async function fetchData() {
     searchTerm = event.target.value.toLowerCase();
     let allItems = [];
-    const parent = document.querySelector("#items-container");
-    let shoeList = parent.querySelector("ul");
-    if (shoeList) parent.removeChild(shoeList);
+
+    list.innerHTML = '';
 
     if (searchTerm.length > 0) {
       const dataFetch = await fetch("http://localhost:8000/api/v1/products");
@@ -26,14 +24,14 @@ form.addEventListener("input", (event) => {
       );
       let names = allItems.map((el) => [el.id, el.nome]);
       names = Object.fromEntries(names);
-      itemsContainer.appendChild(document.createElement('ul'));
 
       let sugestItems = [];
 
       for (const [id, nome] of Object.entries(names)) {
         sugestItems.push(["li", id, nome]);
       }
-      const list = itemsContainer.querySelector("ul");
+
+      list.style.display = 'block';
 
       sugestItems.forEach((el) => {
         list.appendChild(document.createElement(el[0]));
@@ -46,20 +44,21 @@ form.addEventListener("input", (event) => {
         if (eventsExistents){
           return;
         }
-        teste(itemsContainer);
+        teste(list);
         eventsExistents = true;
       })()
       
     }
 
-    shoeList = parent.querySelector("ul");
-
-    if (shoeList) {
-      shoeList.addEventListener("click", (event) => {
+    if (list) {
+      list.addEventListener("click", (event) => {
+        console.log('clicou')
         const searchBar = document.querySelector("#search-bar");
         searchBar.value = event.target.innerText;
 
-        if (shoeList) parent.removeChild(shoeList);
+        list.style.display = 'none';
+        list.innerHTML = '';
+
         let item = {};
         searchTerm = form.querySelector('input').value.toLowerCase();
         if (allData) {

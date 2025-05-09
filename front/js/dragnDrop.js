@@ -1,6 +1,4 @@
-let eventsExistents = false;
-function teste(itemsContainer) {
-    let list = itemsContainer.querySelector('ul');
+function teste(list) {
     const zonas = document.querySelectorAll('.zona');
     const searchBar = document.querySelector('#search-bar');
 
@@ -13,11 +11,6 @@ function teste(itemsContainer) {
         const item = event.target;
         item.classList.remove('dragging');
     });
-
-    if (eventsExistents){
-        return;
-    }
-    eventsExistents = true;
 
     zonas.forEach(zona => {
         zona.addEventListener('dragleave', () => {
@@ -38,8 +31,6 @@ function teste(itemsContainer) {
             }
             fetchData().then((data) => {
                 zona.innerHTML = '';
-                list = itemsContainer.querySelector('ul');
-                console.log(list)
                 if (zona.id === 'view') {
                     let { id, imagem, nome, preco } = data;
                     preco = preco.toString().replace(".", ",")
@@ -57,14 +48,12 @@ function teste(itemsContainer) {
                     div.appendChild(document.createElement('span')).textContent = nome;
                     div.appendChild(document.createElement('span')).textContent = preco;
                 }
-                if(zona.id === 'delete'){
+                if (zona.id === 'delete') {
                     const confirmation = confirm('Tem certeza que deseja apagar?');
-
+                    console.log(confirmation)
                 }
-
-                if (list && list.parentNode === itemsContainer) {
-                    itemsContainer.removeChild(list);
-                }
+                list.innerHTML = '';
+                list.style.display = 'none';
                 searchBar.value = '';
             });
         });
