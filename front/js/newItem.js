@@ -4,7 +4,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const dataForm = new FormData(form);
-  const tamanhos = dataForm.getAll("tamanho");
+  const tamanhos = dataForm.getAll("tamanho").filter(el=>el);
   const data = Object.fromEntries(dataForm);
   data.tamanho = tamanhos;
 

@@ -1,10 +1,10 @@
-function alterItem({id, imagem, nome, preco}){
+function alterItem({id, imagem, nome, preco, cor, categoria, tamanho}){
     const view = document.querySelector('#view');
     const form = document.createElement('form');
     view.appendChild(form).setAttribute('id', 'formAlter');
     const formEl = view.querySelector('form');
 
-    for(const [key, value] of Object.entries({imagem, nome, preco})){
+    for(const [key, value] of Object.entries({imagem, nome, preco, cor, categoria})){
         const label = document.createElement('label');
         const input = document.createElement('input');        
         const div = document.createElement('div');

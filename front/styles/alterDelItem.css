@@ -81,4 +81,22 @@ main{
 .zona{
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
+}
+#formAlter div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#formAlter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+#items-container li{
+    cursor: grab;
+}
+#info{
+    margin: 10px 0;
 }
