@@ -5,6 +5,16 @@ const dbPath = process.env.NODE_ENV === "production"
   ? "/mnt/data/products.json"
   : path.join(__dirname, "../db/products.json");
 
+fs.exists(dbPath, (exists)=>{
+  !exists && fs.writeFile(dbPath, '[]', (err) => {
+      if (err) {
+        console.error('Erro ao criar o arquivo:', err);
+      } else {
+        console.log('Arquivo criado com sucesso!');
+      }
+})
+})
+
 const getAll = (req, res) => {
   fs.readFile(dbPath, "utf-8", (err, data)=>{
     data = JSON.parse(data);
