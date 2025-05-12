@@ -100,3 +100,10 @@ main{
 #info{
     margin: 10px 0;
 }
+[id^="input"]{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    text-justify: center;
+}
