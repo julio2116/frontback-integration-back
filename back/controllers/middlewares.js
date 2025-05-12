@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 const createId = (req, res, next) => {
   const id = 'item-' + Math.floor(Math.random() * 10000);
   req.body = Object.assign({ id }, req.body);

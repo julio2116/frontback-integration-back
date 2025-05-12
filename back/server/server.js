@@ -9,6 +9,8 @@ const router = require('../routes/routes')
 
 app.use("/api/v1/products", router);
 
-app.listen(8000, "localhost", () => {
+const PORT = process.env.PORT || 8000
+
+app.listen(PORT, "localhost", () => {
   console.log("http://localhost:8000");
 });
