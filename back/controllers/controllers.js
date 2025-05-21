@@ -64,13 +64,6 @@ const updateItem = async (req, res) => {
   const id = req.params.id;
   const newProducts = data.map(el => el.id === id ? Object.assign(el, { ...req.body }) : el);
 
-    if(data.length === newProducts.length){
-    return res.status(404).json({
-      status: 'Failed',
-      data: 'This product does not exist!'
-    })
-  }
-
   await writeFileQueue(newProducts, dbPath);
 
   res.status(200).json({
