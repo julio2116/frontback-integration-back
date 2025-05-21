@@ -3,7 +3,7 @@ class ReadWriteQueue {
         this.queue = Promise.resolve();
     }
 
-    enqueue(cb) {
+    enQueue(cb) {
         this.queue = this.queue
             .then(() => cb())
             .catch(err =>

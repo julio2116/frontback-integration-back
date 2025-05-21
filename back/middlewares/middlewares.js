@@ -5,25 +5,16 @@ const createId = (req, res, next) => {
 };
 
 const validateNewItem = (req, res, next) => {
-  const {
-    nome,
-    tamanho,
-    preco,
-    cor,
-    categoria,
-    imagem,
-  } = req.body;
+  const keys = Object.getOwnPropertyNames(req.body);
 
-  const newBody = { nome, tamanho, preco, cor, categoria, imagem };
-
-  for (const key in newBody) {
-    if (!newBody[key]) {
+  keys.forEach(key => {
+    if (!req.body[key]) {
       return res.status(400).json({
-        status: "fail",
-        message: "inform all the camps",
-      });
+        status: "failed",
+        data: "please inform all required keys",
+      })
     }
-  }
+  });
   next();
 };
 
@@ -31,9 +22,9 @@ const validateKeys = ((req, res, next) => {
   const body = req.body;
   const itemKeys = ['nome', 'tamanho', 'preco', 'cor', 'categoria', 'imagem']
   for (const key in body) {
-    if (itemKeys.includes(key) == false) {
+    if (!itemKeys.includes(key)) {
       return res.status(400).json({
-        status: 'fail',
+        status: 'failed',
         message: 'inform only valid keys'
       })
     }
@@ -41,8 +32,21 @@ const validateKeys = ((req, res, next) => {
   next()
 });
 
+const verifyMethod = (req, res, next) => {
+  const methods = ['GET', 'POST', 'PATCH', 'DELETE'];
+
+  if (!methods.includes(req.method)) {
+    return res.status(405).json({
+      status: 'Failed',
+      data: `This method is not supported please try one of the follows: ${methods}`
+    });
+  }
+  next();
+};
+
 module.exports = {
     createId,
     validateNewItem,
-    validateKeys
+    validateKeys,
+    verifyMethod
 }
