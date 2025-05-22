@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
 const corsOptions = {
@@ -8,4 +8,4 @@ const corsOptions = {
   credentials: true
 };
 
-export default corsOptions
+module.exports = corsOptions
