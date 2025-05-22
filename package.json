@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "node back/server/server.js",
+    "server": "node server/server.js",
     "load-test": "bash loadTest.sh",
     "load-huge-test": "bash hugeLoadTest.sh"
   },

@@ -16,18 +16,18 @@
   },
   {
     "id": "item-2",
-    "nome": "Adidas UltraBoost",
+    "nome": "Nike Air Max 270",
     "tamanho": [
-      "38",
       "39",
       "40",
       "41",
-      "42"
+      "42",
+      "43"
     ],
-    "preco": "450.99",
-    "cor": "Branco",
-    "categoria": "Tênis Esportivo",
-    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5236409-440-660/image-640510a66a5f4669ad9e050877b401f8.jpg?v=638463775972700000"
+    "preco": 599,
+    "cor": "Preto",
+    "categoria": "Tênis Casual",
+    "imagem": "https://passarelacalcados.vteximg.com.br/arquivos/ids/5557719-440-660/image-883175bb81ac4bdaa187aafaadf0633d.jpg?v=638753970427970000"
   },
   {
     "id": "item-3",
