@@ -2,6 +2,17 @@
 
 Este é um serviço backend RESTful API construído com Node.js e Express.js que fornece operações CRUD para gerenciamento de produtos em um banco de dados baseado em JSON.
 
+## Projetos Relacionados
+
+### Frontend
+O frontend deste projeto está disponível em: [frontback-integration-front](https://github.com/julio2116/frontback-integration-front)
+
+Este frontend fornece:
+- Interface de usuário para interação com a API
+- Gerenciamento completo de produtos (CRUD)
+- Tratamento de erros e estados de carregamento
+- Integração com todos os endpoints disponíveis
+
 ## Tecnologias Utilizadas
 
 - Node.js
